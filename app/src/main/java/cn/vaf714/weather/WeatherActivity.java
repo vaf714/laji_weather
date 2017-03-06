@@ -11,6 +11,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -62,6 +63,37 @@ public class WeatherActivity extends AppCompatActivity {
     private TextView sportText;//运动建议
 
     private String mWeatherId;//记住当前weather的ID，用于下拉刷新的请求id
+    private int backFlag = 0;
+    @Override
+    public void onBackPressed() {
+        //如果打开了侧滑菜单
+        if (drawerLayout.isDrawerOpen(Gravity.START)){
+            drawerLayout.closeDrawer(Gravity.START);
+            return;
+        }
+        //按两次关闭应用
+        if (backFlag == 0){
+            backFlag = 1;
+            Toast.makeText(this, "再按一次退出", Toast.LENGTH_SHORT).show();
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        //延迟两秒
+                        Thread.sleep(2000);
+                        backFlag = 0;
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }).start();
+            return;
+        }else{
+            finish();
+        }
+        super.onBackPressed();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -133,6 +165,7 @@ public class WeatherActivity extends AppCompatActivity {
                 requestWeather(mWeatherId);
             }
         });
+
     }
 
     /**
