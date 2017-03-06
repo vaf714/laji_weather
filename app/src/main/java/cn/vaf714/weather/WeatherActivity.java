@@ -66,7 +66,7 @@ public class WeatherActivity extends AppCompatActivity {
     private int backFlag = 0;
     @Override
     public void onBackPressed() {
-        //如果打开了侧滑菜单
+        //如果打开了侧滑菜单则关闭
         if (drawerLayout.isDrawerOpen(Gravity.START)){
             drawerLayout.closeDrawer(Gravity.START);
             return;

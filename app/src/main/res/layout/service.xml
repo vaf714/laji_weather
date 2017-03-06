@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="30dp"
+    android:layout_marginTop="15dp"
+    android:layout_weight="1">
+
+    <ImageView
+
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:src="@drawable/hf"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="10dp"
+        android:id="@+id/imageView"
+        app:layout_constraintRight_toLeftOf="@+id/guideline"
+        android:layout_marginRight="2dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="14dp"
+        android:gravity="center"
+        android:text="和风天气  技术支持"
+        android:textColor="#eee"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="0dp"
+        android:textSize="10sp"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline" />
+
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/guideline"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="214dp" />
+</android.support.constraint.ConstraintLayout>
